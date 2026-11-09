@@ -1,0 +1,29 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#111;font-family:'Noto Sans CJK KR','Noto Sans CJK',sans-serif}
+.logo{width:1080px;height:1080px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+/* 안1: 한글 워드마크 */
+#a{background:#0b0b0b;flex-direction:column}
+#a .t1{color:#fff;font-weight:900;font-size:250px;letter-spacing:-12px;line-height:1}
+#a .t2{color:#F7931A;font-weight:900;font-size:250px;letter-spacing:-12px;line-height:1;margin-top:10px}
+#a .dot{color:#F7931A}
+/* 안2: 말풍선 */
+#b{background:#0b0b0b}
+#b .bubble{width:640px;height:500px;background:#F7931A;border-radius:120px;position:relative;display:flex;align-items:center;justify-content:center;margin-top:-60px}
+#b .bubble:after{content:'';position:absolute;left:150px;bottom:-110px;border-left:0 solid transparent;border-right:150px solid transparent;border-top:130px solid #F7931A}
+#b .bubble span{color:#0b0b0b;font-weight:900;font-size:300px;letter-spacing:-14px;line-height:1}
+/* 안3: 캔들 + 물음표 */
+#c{background:#0b0b0b}
+#c svg{width:760px;height:760px}
+</style></head><body>
+<div class="logo" id="a"><div class="t1">그래서</div><div class="t2">비트<span class="dot">?</span></div></div>
+<div class="logo" id="b"><div class="bubble"><span>비트</span></div></div>
+<div class="logo" id="c"><svg viewBox="0 0 760 760">
+ <g stroke="#fff" stroke-width="14" stroke-linecap="round">
+  <line x1="150" y1="250" x2="150" y2="560"/><line x1="290" y1="180" x2="290" y2="500"/>
+ </g>
+ <rect x="110" y="320" width="80" height="170" rx="10" fill="#fff"/>
+ <rect x="250" y="240" width="80" height="190" rx="10" fill="#fff"/>
+ <path d="M430 270 C430 160 640 160 640 270 C640 350 540 360 535 450" fill="none" stroke="#F7931A" stroke-width="64" stroke-linecap="round"/>
+ <circle cx="535" cy="560" r="40" fill="#F7931A"/>
+</svg></div>
+</body></html>

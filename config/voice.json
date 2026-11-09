@@ -1,0 +1,7 @@
+{
+  "provider": "azure",
+  "model": "MAI-Voice-2.1",
+  "voice": "ko-KR-Haena:MAI-Voice-2.1",
+  "speed": 1.15,
+  "tone": "차분한 해설"
+}

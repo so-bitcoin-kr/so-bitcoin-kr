@@ -1,16 +1,16 @@
-## Hi there 👋
+# 그래서비트 (@so.bitcoin.kr)
 
-<!--
-**so-bitcoin-kr/so-bitcoin-kr** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+금리·달러·전쟁 뉴스, 그래서 비트코인엔? — 직장인을 위한 비트코인 시장 해석 계정의 제작 저장소입니다.
 
-Here are some ideas to get you started:
+## 폴더
+| 폴더 | 내용 |
+| --- | --- |
+| `brand/` | 로고, 하이라이트 커버 (블랙 #0b0b0b + 비트코인 오렌지 #F7931A) |
+| `templates/` | 카드뉴스·하이라이트·로고 HTML 틀과 렌더 스크립트 (Playwright) |
+| `config/` | 릴스 음성 설정 (`voice.json`) |
+| `posts/YYYY-MM-DD-주제/` | 게시용 이미지. 파일 이름은 `01.jpg`부터 장 순서대로 |
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+## 규칙
+- 게시용 이미지는 JPEG, 피드 1080×1350(4:5), 스토리 1080×1920(9:16).
+- 이 저장소는 공개입니다. 게시용 이미지와 틀만 올리고, 계획 문서·개인 정보·키는 올리지 않습니다.
+- 모든 게시물은 정보 제공용이며 투자 권유가 아닙니다.
