@@ -29,11 +29,13 @@
 - 배경 #0b0b0b, 강조 비트코인 오렌지 #F7931A, 글꼴 Noto Sans CJK KR.
 - 피드 1080×1350(4:5) JPEG, 스토리·릴스 1080×1920(9:16).
 - 화면 위 브랜드명 '그래서비트', 아래 작은 글씨 면책 문구.
-- 틀: `templates/carousel_slides.html`(카드뉴스), `templates/reel_info_scenes.html`(정보형 릴스 장면), `templates/reel_hook.html`(후킹형 릴스, `render(t)`로 프레임별 렌더).
+- 틀: `templates/carousel_slides.html`(카드뉴스 본문), `templates/carousel_cover.html`(카드뉴스 표지), `templates/reel_info_scenes.html`(정보형 릴스 장면), `templates/reel_hook.html`(후킹형 릴스), `templates/reel_chat.html`(예능형 메신저 대화). 릴스 틀은 `render(t)`로 프레임별 렌더(30fps).
+- **캐러셀 첫 장 = 후킹 이미지(위 60%) + 후킹 카피(아래 40%).** 이미지는 ₿·$ 코인, 시소, 연설대, 차트 같은 상징을 직접 그립니다. 실존 인물 사진·초상은 넣지 않습니다(사진 저작권·초상권, 보증으로 오해될 위험). 인물을 쓰고 싶으면 실루엣·일러스트로 하거나 Wonki 님이 권리 확인된 사진을 직접 넣습니다.
+- 메신저 화면은 특정 앱(카카오톡 등) 디자인을 흉내 내지 않고 브랜드 색으로 그립니다.
 
 ## 릴스 소리
 - 음성: `config/voice.json` (Speko 커넥터 → azure `MAI-Voice-2.1`, 해나, **1.2배**, 차분한 해설 톤). 문장 단위로 나눠 생성하고, 장면마다 0.35초 여백.
-- 음악: 직접 만든 곡만 사용. `assets/bgm/calm.wav`(정보형, 음성 아래 아주 약하게 + 사이드체인 덕킹), `assets/bgm/hook.wav`(후킹·예능형, 음성 없이). 재생성은 `templates/bgm_synth.py`.
+- 음악: 직접 만든 곡만 사용. **잔잔하거나 웅장한 곡, 영상마다 다른 곡.** `python3 templates/bgm_library.py`로 calm_*(정보형, 음성 아래 아주 약하게 + 사이드체인 덕킹)과 epic_*(후킹·예능형)을 만들고, `assets/bgm/usage.json`에서 안 쓴 곡을 골라 쓴 뒤 기록합니다. 곡이 모자라면 LIBRARY에 조성·진행·템포를 바꿔 추가합니다. 최종 음량은 loudnorm I=-16.
 - 인스타 인기 음원은 자동 게시로 붙일 수 없습니다. 쓰려면 그 릴스만 Wonki 님이 앱에서 직접 올립니다.
 
 ## 게시 방법
