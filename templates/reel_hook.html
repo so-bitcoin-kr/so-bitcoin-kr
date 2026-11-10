@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0b0b;font-family:'Noto Sans CJK KR',sans-serif;color:#fff}
+.sc{position:absolute;inset:0;opacity:0}
+.c{position:absolute;left:80px;right:80px;text-align:center;word-break:keep-all}
+.o{color:#F7931A}
+.brand{position:absolute;top:200px;left:0;right:0;text-align:center;font-size:36px;font-weight:700;color:#F7931A;letter-spacing:1px}
+.foot{position:absolute;top:1540px;left:0;right:0;text-align:center;font-size:28px;color:#666}
+.huge{font-size:150px;font-weight:900;line-height:1.15;letter-spacing:-4px}
+.big{font-size:104px;font-weight:900;line-height:1.25;letter-spacing:-3px}
+.mid{font-size:64px;font-weight:700;line-height:1.4;letter-spacing:-1px}
+.small{font-size:40px;color:#9a9a9a;line-height:1.5}
+.pill{display:inline-block;background:#F7931A;color:#0b0b0b;font-weight:900;font-size:46px;padding:14px 36px;border-radius:999px}
+.num{font-size:150px;font-weight:900;color:#F7931A;letter-spacing:-6px;font-variant-numeric:tabular-nums}
+.box{display:inline-block;border:5px solid #F7931A;border-radius:28px;padding:24px 44px}
+</style></head>
+<body>
+<div class="brand">그래서비트</div>
+
+<!-- 0.0~3.0 훅: 첫 프레임부터 완성된 문장 -->
+<div class="sc" id="s1">
+  <div class="c" style="top:470px"><span class="pill" id="s1pill">실화</span></div>
+  <div class="c huge" style="top:620px" id="s1a">피자 2판에</div>
+  <div class="c huge o" style="top:800px" id="s1b">1조 원?</div>
+  <div class="c small" style="top:1080px" id="s1c">비트코인 역사상 가장 비싼 피자</div>
+</div>
+
+<!-- 3.0~6.0 -->
+<div class="sc" id="s2">
+  <div class="c" style="top:500px"><span class="box mid o" id="s2date">2010년 5월 22일</span></div>
+  <div class="c big" style="top:720px;font-size:84px" id="s2a">한 프로그래머가</div>
+  <div class="c big" style="top:840px;font-size:84px" id="s2b">피자 2판을 주문합니다</div>
+  <svg id="pz" style="position:absolute;left:390px;top:1120px" width="300" height="300" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="46" fill="#F7931A"/><circle cx="50" cy="50" r="39" fill="#ffd27a"/>
+    <g stroke="#F7931A" stroke-width="2"><line x1="50" y1="11" x2="50" y2="89"/><line x1="11" y1="50" x2="89" y2="50"/><line x1="22" y1="22" x2="78" y2="78"/><line x1="78" y1="22" x2="22" y2="78"/></g>
+    <g fill="#c0392b"><circle cx="38" cy="30" r="5"/><circle cx="64" cy="36" r="5"/><circle cx="30" cy="60" r="5"/><circle cx="58" cy="66" r="5"/><circle cx="70" cy="56" r="4"/></g>
+  </svg>
+</div>
+
+<!-- 6.0~9.5 -->
+<div class="sc" id="s3">
+  <div class="c mid" style="top:560px">결제 수단은</div>
+  <div class="c big" style="top:680px">비트코인</div>
+  <div class="c num" style="top:860px" id="cnt1">0</div>
+  <div class="c big" style="top:1080px">개</div>
+</div>
+
+<!-- 9.5~13.5 -->
+<div class="sc" id="s4">
+  <div class="c big" style="top:560px">그 비트코인,<br>지금은 얼마일까?</div>
+  <div class="c num" style="top:900px" id="cnt2"></div>
+  <div class="c small" style="top:1140px" id="s4src">11/9 시세 약 1억 278만 원 기준 · 출처: 토큰포스트</div>
+</div>
+
+<!-- 13.5~16.5 -->
+<div class="sc" id="s5">
+  <div class="c mid" style="top:600px">그래서 이날은 지금</div>
+  <div class="c big o" style="top:720px">'비트코인 피자데이'</div>
+  <div class="c mid" style="top:900px">로 불립니다</div>
+  <div class="c small" style="top:1080px">매년 5월 22일</div>
+</div>
+
+<!-- 16.5~19.5 -->
+<div class="sc" id="s6">
+  <div class="c big" style="top:620px">이런 비트코인 이야기,</div>
+  <div class="c big o" style="top:780px">매주 올라옵니다</div>
+  <div class="c mid" style="top:1000px">@so.bitcoin.kr</div>
+</div>
+
+<div class="foot">과거 가격이 미래 수익을 보장하지 않습니다 · 투자 권유 아님</div>
+
+<script>
+const S=[['s1',0,3.0],['s2',3.0,6.0],['s3',6.0,9.5],['s4',9.5,13.5],['s5',13.5,16.5],['s6',16.5,19.5]];
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const eo=x=>1-Math.pow(1-clamp(x),3);
+const back=x=>{x=clamp(x);const c=1.7;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const $=id=>document.getElementById(id);
+function pop(el,lt,start,dur=0.35){const p=clamp((lt-start)/dur);el.style.opacity=start<=0?1:p;el.style.transform=`scale(${start<=0&&lt<dur? 1.12-0.12*eo(lt/dur) : 0.6+0.4*back(p)})`;}
+function render(t){
+  for(const [id,a,b] of S){
+    const el=$(id); const lt=t-a;
+    if(t<a||t>=b){el.style.opacity=0;continue}
+    const fadeOut=clamp((b-t)/0.12); el.style.opacity=fadeOut;
+    if(id==='s1'){ // 첫 프레임 완성 + 펀치 줌 + 흔들림
+      const z=1.18-0.18*eo(lt/0.25); const sh=lt<0.5?Math.sin(lt*90)*8*(1-lt/0.5):0;
+      $('s1b').style.transform=`scale(${z}) translateX(${sh}px)`;
+      $('s1a').style.transform=`scale(${1.06-0.06*eo(lt/0.25)})`;
+      $('s1pill').style.transform=`scale(${1+0.08*Math.sin(lt*8)})`;
+      $('s1c').style.opacity=clamp((lt-0.6)/0.3);
+    }
+    if(id==='s2'){ pop($('s2date'),lt,0.05); pop($('s2a'),lt,0.45); pop($('s2b'),lt,0.85);
+      const pz=$('pz'); pz.style.opacity=clamp((lt-1.3)/0.3); pz.style.transform=`rotate(${lt*40}deg) scale(${0.7+0.3*back((lt-1.3)/0.4)})`; }
+    if(id==='s3'){ const p=eo((lt-0.4)/1.6); $('cnt1').textContent=Math.round(10000*p).toLocaleString('ko-KR');
+      $('cnt1').style.transform=`scale(${lt>2.0&&lt<2.3?1.15:1})`; }
+    if(id==='s4'){ const p=eo((lt-1.0)/1.6); const v=10278*p; // 억 원
+      $('cnt2').textContent= lt<1.0? '?' : (v>=10000? `${Math.floor(v/10000)}조 ${Math.round(v%10000)}억 원` : `${Math.round(v).toLocaleString('ko-KR')}억 원`);
+      $('cnt2').style.transform=`scale(${lt<1.0?1+0.1*Math.sin(lt*12):(lt>2.6&&lt<2.9?1.15:1)})`;
+      $('s4src').style.opacity=clamp((lt-2.6)/0.3); }
+    if(id==='s5'||id==='s6'){ el.querySelectorAll('.c').forEach((c,i)=>pop(c,lt,0.05+i*0.35)); }
+  }
+}
+window.render=render; render(0);
+</script>
+</body></html>
