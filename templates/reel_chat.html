@@ -4,7 +4,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0b0b;font-family:'Noto Sans CJK KR',sans-serif;color:#fff}
 .brand{position:absolute;top:200px;left:0;right:0;text-align:center;font-size:36px;font-weight:700;color:#F7931A}
-.title{position:absolute;top:270px;left:60px;right:60px;text-align:center;font-size:66px;font-weight:900;line-height:1.3;letter-spacing:-2px}
+.title{position:absolute;top:255px;left:40px;right:40px;text-align:center;font-weight:900;line-height:1.25;letter-spacing:-2px}
 .o{color:#F7931A}
 #phone{position:absolute;left:70px;right:70px;top:470px;height:1020px;background:#161616;border:3px solid #2a2a2a;border-radius:44px;overflow:hidden}
 .bar{height:110px;border-bottom:2px solid #262626;display:flex;align-items:center;padding:0 36px;gap:22px;font-size:40px;font-weight:700}
@@ -31,7 +31,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0b0b;font-fam
 <body>
 <div class="brand">그래서비트</div>
 <div id="chat">
-  <div class="title" id="title">부장님이 갑자기<br><span class="o">비트코인 얘기</span>를 꺼냈다</div>
+  <div class="title" id="title"><div id="t1" style="font-size:62px">"비트코인은 거품"이라던 부장님</div><div id="t2" style="font-size:80px;margin-top:8px">계좌 열어보니 <span id="red" style="display:inline-block;background:#F7931A;color:#F7931A;border-radius:10px;padding:0 10px;position:relative">레버리지<span id="redbar" style="position:absolute;inset:0;background:#262626;border:4px dashed #F7931A;border-radius:10px;color:#F7931A;display:flex;align-items:center;justify-content:center;letter-spacing:6px">???</span></span> <span class="o">3배</span></div></div>
   <div id="phone">
     <div class="bar"><span class="back">‹</span>부장님<span class="sub">오후 10:29</span></div>
     <div class="row them" id="b1" style="top:150px"><div class="av">부</div><div class="bub">자네 아직도 비트코인 하나?</div></div>
@@ -73,7 +73,9 @@ function render(t){
   const chatOn=t<T_INFO; $('chat').style.opacity=chatOn?1:0; $('b7').style.opacity=0;
   if(chatOn){
     // 첫 프레임: 제목 + 첫 말풍선 이미 보임
-    $('title').style.transform=`scale(${1.08-0.08*eo(t/0.3)})`;
+    $('t1').style.transform=`scale(${1.06-0.06*eo(t/0.3)})`;
+    const sh=t<0.45?Math.sin(t*95)*9*(1-t/0.45):0; $('t2').style.transform=`scale(${1.07-0.07*eo(t/0.25)}) translateX(${sh}px)`;
+    const rev=t>=8.5; $('redbar').style.opacity=rev?0:1; $('redbar').style.transform=`scale(${rev?1:1+0.04*Math.sin(t*9)})`; $('red').style.color=rev?'#0b0b0b':'#F7931A';
     $('b1').style.opacity=1; $('b1').style.transform=`scale(${t<0.3?0.92+0.08*eo(t/0.3):1})`;
     show('b2',t,1.5); show('b3',t,2.9); show('b4',t,4.1); show('b5',t,5.5);
     const tyOn=t>=6.9&&t<8.5; $('ty').style.opacity=tyOn?1:0; $('ty').style.transform='scale(1)';
