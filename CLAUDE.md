@@ -45,16 +45,19 @@
   - `assets/bgm/usage.json`에서 안 쓴 곡을 골라 쓴 뒤 기록합니다. 최종 음량은 loudnorm I=-16.
 - **인스타 음원을 붙일 때(2026-11-18부터 가능):** Metricool 커넥터(브랜드 blogId `8098130`, 인스타는 Facebook 방식 연결)의 `createScheduledPost`로 릴스를 예약하고 `instagramData.audioConfiguration`에 audioId를 넣습니다. 곡 이름으로 넣으면 후보 목록이 돌아오니 그중 숫자 id를 고릅니다. 영상 자체 음악은 `videoVolume: 0`.
   - 정식 라이브러리(`music`)에 없는 곡은 `original_sound`(다른 사람이 올린 소리)만 있습니다. 원본이 지워지거나 신고되면 무음이 될 수 있으니 Wonki 님에게 알리고 씁니다.
-  - Metricool로 예약한 편은 같은 날 Windsor 예약 작업을 꺼서 중복 게시를 막습니다. 무료 플랜은 예약 20개까지입니다.
   - 3번 곡 ATLXS 'PASSO BEM SOLTO (slowed)'는 audioId `748648301047443`(original_sound). 11/20 예능형에 처음 사용.
 
-## 게시 방법
-1. 이미지·영상을 `posts/YYYY-MM-DD-주제/`에 넣고 main에 push.
-2. 공개 주소: `https://raw.githubusercontent.com/so-bitcoin-kr/so-bitcoin-kr/main/<경로>`
-3. Windsor.ai for Social Media 커넥터, connector `instagram`, account `17841451954713415`. `create_carousel_post` / `create_video_post` / `create_story` / `create_comment`.
-4. 게시 전 같은 캡션이 이미 있는지 `get_data`로 확인(중복 방지). 무료 체험 플랜이라 `force_refresh`는 쓰지 않습니다.
-5. 하이라이트 추가, 댓글 고정, 프로필 고정은 API로 안 되므로 Wonki 님에게 할 일로 안내합니다.
-6. **실제 게시·댓글은 Wonki 님이 요청했거나 예약 작업에 적힌 것만** 합니다.
+## 게시 방법 (2026-11-18부터 모든 게시는 Metricool)
+1. 이미지·영상을 `posts/YYYY-MM-DD-주제/`에 넣고 main에 push. 공개 주소: `https://raw.githubusercontent.com/so-bitcoin-kr/so-bitcoin-kr/main/<경로>`
+2. **Metricool 커넥터 `createScheduledPost`로 예약**(blogId `8098130`, timezone `Asia/Seoul`, `autoPublish: true`). Metricool이 파일을 자기 서버로 옮겨 올리므로 영상 형식 문제가 없습니다.
+   - 캐러셀: `instagramData.type: "POST"`, media에 이미지 주소를 순서대로.
+   - 릴스: `type: "REEL"`, `videoThumbnailUrl`에 표지, 음원은 위 '릴스 소리' 참고.
+   - 안내 댓글은 `firstCommentText`에 넣습니다(별도 댓글 작업 불필요).
+   - 예약 전 `getScheduledPosts`로 같은 날 같은 편이 이미 있는지 확인(중복 방지). 무료 플랜은 예약 20개까지라 그 주 것만 걸어 둡니다.
+   - 예약 후 응답의 `plannerUrl`을 Wonki 님에게 알려 줍니다.
+3. **Windsor.ai 커넥터는 게시에 쓰지 않습니다.** 성과 수치(get_data)와 댓글 답글·숨김 용도로만 씁니다(connector `instagram`, account `17841451954713415`, `force_refresh` 금지).
+4. 하이라이트 추가, 댓글 고정, 프로필 고정은 API로 안 되므로 Wonki 님에게 할 일로 안내합니다.
+5. **실제 게시·댓글은 Wonki 님이 요청했거나 예약 작업에 적힌 것만** 합니다.
 
 ## 넘지 않을 선
 - 매수·매도 권유, 목표가, 수익 보장, 유료 리딩방·1:1 투자 상담 유도 금지(유사투자자문 규제).
