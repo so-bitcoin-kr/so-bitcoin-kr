@@ -45,7 +45,8 @@
   - `assets/bgm/usage.json`에서 안 쓴 곡을 골라 쓴 뒤 기록합니다. 최종 음량은 loudnorm I=-16.
 - **인스타 음원을 붙일 때(2026-11-18부터 가능):** Metricool 커넥터(브랜드 blogId `8098130`, 인스타는 Facebook 방식 연결)의 `createScheduledPost`로 릴스를 예약하고 `instagramData.audioConfiguration`에 audioId를 넣습니다. 곡 이름으로 넣으면 후보 목록이 돌아오니 그중 숫자 id를 고릅니다. 영상 자체 음악은 `videoVolume: 0`.
   - 정식 라이브러리(`music`)에 없는 곡은 `original_sound`(다른 사람이 올린 소리)만 있습니다. 원본이 지워지거나 신고되면 무음이 될 수 있으니 Wonki 님에게 알리고 씁니다.
-  - 3번 곡 ATLXS 'PASSO BEM SOLTO (slowed)'는 audioId `748648301047443`(original_sound). 11/20 예능형에 처음 사용.
+  - 사용 기록(original_sound): ATLXS 'PASSO BEM SOLTO (slowed)' `748648301047443` → 11/18 피자데이 / yung kai 'blue' `514939397740310`(21초) → 11/20 부장님 레버리지.
+  - Wonki 님은 완전 자동을 원합니다. 앱 '저장됨'의 정식 인기곡은 외부 도구에 열려 있지 않으므로, 같은 곡의 original_sound를 찾아 자동으로 붙입니다(알림 게시는 쓰지 않음). 저장 목록: 은방울(DANIEL), EVERYTHING(검정치마), blue(yung kai), Step By Step Better(melohour), X-COOL!(Super Slowed), 사장님 도박은 재미로 하셔야 합니다(비비), Big Sleep(정현수), Atsuki Duelist Tachi, PASSO BEM SOLTO(Slowed).
 
 ## 게시 방법 (2026-11-18부터 모든 게시는 Metricool)
 1. 이미지·영상을 `posts/YYYY-MM-DD-주제/`에 넣고 main에 push. 공개 주소: `https://raw.githubusercontent.com/so-bitcoin-kr/so-bitcoin-kr/main/<경로>`
