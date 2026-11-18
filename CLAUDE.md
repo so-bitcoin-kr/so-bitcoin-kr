@@ -43,7 +43,10 @@
   - **후킹형·예능형 = 폰크 계열(2026-11-17 Wonki 님 확정).** 숏폼 후킹 영상에서 많이 쓰는 카우벨 멜로디·찌그러진 808 베이스·강한 킥·클랩 구성. `templates/bgm_phonk.py`의 `build()`로 영상 타이밍에 맞춰 만듭니다: 첫 프레임 `impact`, 반전 직전 `break`(드럼을 빼고 긴장), 반전 순간 `impact`. 곡마다 리프·조성·템포를 새로 짜고, 특정 곡의 멜로디는 쓰지 않습니다.
   - 정보형(음성 있음) = `templates/bgm_library.py`의 calm_*을 음성 아래 아주 약하게 + 사이드체인 덕킹.
   - `assets/bgm/usage.json`에서 안 쓴 곡을 골라 쓴 뒤 기록합니다. 최종 음량은 loudnorm I=-16.
-- 인스타 인기 음원은 자동 게시로 붙일 수 없습니다. 쓰려면 그 릴스만 Wonki 님이 앱에서 직접 올립니다.
+- **인스타 음원을 붙일 때(2026-11-18부터 가능):** Metricool 커넥터(브랜드 blogId `8098130`, 인스타는 Facebook 방식 연결)의 `createScheduledPost`로 릴스를 예약하고 `instagramData.audioConfiguration`에 audioId를 넣습니다. 곡 이름으로 넣으면 후보 목록이 돌아오니 그중 숫자 id를 고릅니다. 영상 자체 음악은 `videoVolume: 0`.
+  - 정식 라이브러리(`music`)에 없는 곡은 `original_sound`(다른 사람이 올린 소리)만 있습니다. 원본이 지워지거나 신고되면 무음이 될 수 있으니 Wonki 님에게 알리고 씁니다.
+  - Metricool로 예약한 편은 같은 날 Windsor 예약 작업을 꺼서 중복 게시를 막습니다. 무료 플랜은 예약 20개까지입니다.
+  - 3번 곡 ATLXS 'PASSO BEM SOLTO (slowed)'는 audioId `748648301047443`(original_sound). 11/20 예능형에 처음 사용.
 
 ## 게시 방법
 1. 이미지·영상을 `posts/YYYY-MM-DD-주제/`에 넣고 main에 push.
