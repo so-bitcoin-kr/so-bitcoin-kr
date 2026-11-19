@@ -59,7 +59,7 @@
 ## 게시 방법 (2026-11-18부터 모든 게시는 Metricool)
 1. 이미지·영상을 `posts/YYYY-MM-DD-주제/`에 넣고 main에 push. 공개 주소: `https://raw.githubusercontent.com/so-bitcoin-kr/so-bitcoin-kr/main/<경로>`
 2. **Metricool 커넥터 `createScheduledPost`로 예약**(blogId `8098130`, timezone `Asia/Seoul`, `autoPublish: true`). Metricool이 파일을 자기 서버로 옮겨 올리므로 영상 형식 문제가 없습니다.
-   - 캐러셀: `instagramData.type: "POST"`, media에 이미지 주소를 순서대로.
+   - 캐러셀: `instagramData.type: "POST"`, media에 이미지 주소를 순서대로. **2026-11-19부터 캐러셀은 `autoPublish: false`(알림 게시)** — 20:00에 Metricool 앱 알림 → Wonki 님이 인스타 앱에서 음악을 골라 게시(음악 캐러셀은 릴스 탭 노출 자격). 알림 게시에서는 첫 댓글이 자동으로 달리지 않으므로, 예약 때 안내 댓글 문구를 Wonki 님에게 따로 전달합니다. 캐러셀마다 어울리는 곡 1~2개를 추천합니다(저장 목록 밖 곡도 가능).
    - 릴스: `type: "REEL"`, `videoThumbnailUrl`에 표지, 음원은 위 '릴스 소리' 참고.
    - 안내 댓글은 `firstCommentText`에 넣습니다(별도 댓글 작업 불필요).
    - 예약 전 `getScheduledPosts`로 같은 날 같은 편이 이미 있는지 확인(중복 방지). 무료 플랜은 예약 20개까지라 그 주 것만 걸어 둡니다.
